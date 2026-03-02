@@ -9,5 +9,11 @@ sources.json
 sources-detailed.json
 payer2-bigquery-errors.json
 
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform.lock.hcl
+
 # OS files
 .DS_Store
