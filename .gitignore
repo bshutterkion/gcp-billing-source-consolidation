@@ -1,0 +1,16 @@
+# Go binary
+gcp-single-billing-source/billing-consolidator
+
+# Python venv
+gcp-single-billing-source/.venv/
+
+# Sample/generated data
+gcp-single-billing-source/*.xlsx
+gcp-single-billing-source/*.zip
+gcp-single-billing-source/*.sql
+gcp-single-billing-source/sources.json
+gcp-single-billing-source/sources-detailed.json
+gcp-single-billing-source/payer2-bigquery-errors.json
+
+# OS files
+.DS_Store
