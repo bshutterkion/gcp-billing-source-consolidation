@@ -49,7 +49,6 @@ gcloud iam service-accounts keys create sa-key.json \
 ## Build the CLI
 
 ```bash
-cd gcp-single-billing-source
 go build -o billing-consolidator .
 ```
 

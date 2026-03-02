@@ -60,7 +60,6 @@ This key file is used both by the CLI tool (`--sa-key`) and uploaded to Kion.
 ## Build
 
 ```bash
-cd gcp-single-billing-source
 go build -o billing-consolidator .
 ```
 
