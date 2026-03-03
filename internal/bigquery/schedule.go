@@ -70,14 +70,23 @@ func BuildScheduledQuerySQL(destProject, destDataset, destTable string, sources 
 		}
 	}
 
+	// Build column list for INSERT (required for ingestion-time partitioned tables)
+	var insertClause string
+	if merged != nil {
+		columnList := BuildColumnList(merged)
+		insertClause = fmt.Sprintf("INSERT INTO %s (%s)", destRef, columnList)
+	} else {
+		insertClause = fmt.Sprintf("INSERT INTO %s", destRef)
+	}
+
 	sql := fmt.Sprintf(`DECLARE cutoff TIMESTAMP DEFAULT TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL %d DAY);
 
 DELETE FROM %s
 WHERE usage_start_time >= cutoff;
 
-INSERT INTO %s
+%s
 %s;`,
-		days, destRef, destRef, strings.Join(unions, "\nUNION ALL\n"))
+		days, destRef, insertClause, strings.Join(unions, "\nUNION ALL\n"))
 
 	return sql, nil
 }

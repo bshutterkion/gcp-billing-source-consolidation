@@ -38,6 +38,24 @@ func TestBuildScheduledQuerySQL_CustomDays(t *testing.T) {
 	assert.Contains(t, sql, "INTERVAL 7 DAY")
 }
 
+func TestBuildScheduledQuerySQL_WithMergedSchema(t *testing.T) {
+	sources := testSources()
+	merged := &MergedSchema{
+		Fields: []MergedField{
+			{Name: "billing_account_id", Type: "STRING", Mode: "NULLABLE"},
+			{Name: "cost", Type: "FLOAT64", Mode: "NULLABLE"},
+		},
+	}
+	schemas := []*TableSchema{
+		{Fields: []SchemaField{{Name: "billing_account_id", Type: "STRING"}, {Name: "cost", Type: "FLOAT64"}}},
+		{Fields: []SchemaField{{Name: "billing_account_id", Type: "STRING"}, {Name: "cost", Type: "FLOAT64"}}},
+	}
+	sql, err := BuildScheduledQuerySQL("dest", "ds", "tbl", sources, 3, merged, schemas)
+	require.NoError(t, err)
+	assert.Contains(t, sql, "INSERT INTO `dest.ds.tbl` (billing_account_id, cost)")
+	assert.NotContains(t, sql, "SELECT *")
+}
+
 func TestBuildScheduledSQL(t *testing.T) {
 	sql := BuildScheduledSQL("dest", "ds", "tbl", "meta", 5)
 	assert.Contains(t, sql, "INTERVAL 5 DAY")
