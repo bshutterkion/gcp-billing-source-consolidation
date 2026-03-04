@@ -60,7 +60,7 @@ mv billing-consolidator-* billing-consolidator
 
 Requires **Docker** and **Docker Compose** installed.
 
-Place your `sa-key.json` in the project root, then run commands via:
+The docker-compose mounts your gcloud ADC credentials automatically. If using a SA key instead, place `sa-key.json` in the project root.
 
 ```bash
 docker compose run --rm billing-consolidator <command> [flags]

@@ -8,7 +8,7 @@ Northwestern University is transitioning from 2 shared billing IDs to 39+ indivi
 
 ## Prerequisites
 
-- **Go 1.21+** installed
+- **Go 1.25+** installed
 - **gcloud CLI** installed and authenticated:
   - `gcloud auth login` (for gcloud commands)
   - `gcloud auth application-default login` (for the Go tool's ADC auth)
