@@ -20,24 +20,36 @@ Outputs discovered sources as JSON for use with the add-source command.`,
 }
 
 var (
-	orgID           string
-	outputFile      string
+	orgID            string
+	outputFile       string
 	discoverDetailed bool
+	projectsFile     string
 )
 
 func init() {
 	discoverCmd.Flags().StringVar(&orgID, "org-id", "", "GCP organization ID (optional, scans all accessible projects if omitted)")
 	discoverCmd.Flags().StringVar(&outputFile, "output", "", "Output file path (defaults to stdout)")
 	discoverCmd.Flags().BoolVar(&discoverDetailed, "detailed", false, "Output detailed/resource-level exports instead of standard")
+	discoverCmd.Flags().StringVar(&projectsFile, "projects-file", "", "JSON file with project list to scan (only those projects are scanned)")
 	rootCmd.AddCommand(discoverCmd)
 }
 
 func runDiscover(cmd *cobra.Command, args []string) error {
 	ctx := context.Background()
 
-	lister := &bq.GCPProjectLister{SAKeyFile: cfg.SAKeyFile}
 	factory := &bq.ClientFactory{SAKeyFile: cfg.SAKeyFile}
 	discoverer := &bq.GCPTableDiscoverer{Factory: factory}
+
+	var lister bq.ProjectLister
+	if projectsFile != "" {
+		projectIDs, err := loadProjectIDsFromFile(projectsFile)
+		if err != nil {
+			return fmt.Errorf("loading projects file: %w", err)
+		}
+		lister = &bq.StaticProjectLister{ProjectIDs: projectIDs}
+	} else {
+		lister = &bq.GCPProjectLister{SAKeyFile: cfg.SAKeyFile}
+	}
 
 	sources, err := bq.DiscoverAll(ctx, lister, discoverer, orgID)
 	if err != nil {
@@ -85,4 +97,27 @@ func runDiscover(cmd *cobra.Command, args []string) error {
 	}
 
 	return nil
+}
+
+// loadProjectIDsFromFile reads a sources JSON file and extracts unique project IDs.
+func loadProjectIDsFromFile(path string) ([]string, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("reading file: %w", err)
+	}
+
+	var sources []bq.BillingExportSource
+	if err := json.Unmarshal(data, &sources); err != nil {
+		return nil, fmt.Errorf("parsing JSON: %w", err)
+	}
+
+	seen := make(map[string]bool)
+	var projectIDs []string
+	for _, s := range sources {
+		if !seen[s.ProjectID] {
+			seen[s.ProjectID] = true
+			projectIDs = append(projectIDs, s.ProjectID)
+		}
+	}
+	return projectIDs, nil
 }

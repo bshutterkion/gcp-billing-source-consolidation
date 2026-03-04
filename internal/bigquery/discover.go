@@ -68,6 +68,16 @@ type TableDiscoverer interface {
 	DiscoverTables(ctx context.Context, projectID string) ([]BillingExportSource, error)
 }
 
+// StaticProjectLister implements ProjectLister with a fixed list of project IDs.
+type StaticProjectLister struct {
+	ProjectIDs []string
+}
+
+// ListProjects returns the static list of project IDs.
+func (l *StaticProjectLister) ListProjects(ctx context.Context, orgID string) ([]string, error) {
+	return l.ProjectIDs, nil
+}
+
 // GCPProjectLister implements ProjectLister using the Cloud Resource Manager API.
 type GCPProjectLister struct {
 	SAKeyFile string
