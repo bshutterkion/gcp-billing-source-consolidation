@@ -418,7 +418,7 @@ func (c *Consolidator) RunFullLoad(ctx context.Context, sources []SourceRecord, 
 		return nil
 	}
 
-	fmt.Printf("Running full load from %d sources...\n", len(sources))
+	fmt.Printf("Running full load from %d sources...\n", len(validSources))
 	q := c.Client.Query(sql)
 	job, err := q.Run(ctx)
 	if err != nil {
@@ -456,7 +456,7 @@ func (c *Consolidator) RunIncrementalSync(ctx context.Context, sources []SourceR
 		return nil
 	}
 
-	fmt.Printf("Running incremental sync (last %d days) from %d sources...\n", days, len(sources))
+	fmt.Printf("Running incremental sync (last %d days) from %d sources...\n", days, len(validSources))
 	q := c.Client.Query(sql)
 	job, err := q.Run(ctx)
 	if err != nil {
