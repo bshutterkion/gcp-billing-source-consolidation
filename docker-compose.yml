@@ -3,5 +3,8 @@ services:
     build: .
     volumes:
       - .:/data
+      - ${GOOGLE_APPLICATION_CREDENTIALS:-~/.config/gcloud/application_default_credentials.json}:/tmp/adc.json:ro
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/tmp/adc.json
     working_dir: /data
     entrypoint: ["/app/billing-consolidator"]
