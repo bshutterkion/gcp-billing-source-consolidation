@@ -165,7 +165,11 @@ func DiscoverAll(ctx context.Context, lister ProjectLister, discoverer TableDisc
 		return nil, err
 	}
 
-	fmt.Printf("Found %d projects in organization %s\n", len(projects), orgID)
+	if orgID != "" {
+		fmt.Printf("Found %d projects in organization %s\n", len(projects), orgID)
+	} else {
+		fmt.Printf("Found %d accessible projects\n", len(projects))
+	}
 
 	var allSources []BillingExportSource
 	for _, projID := range projects {

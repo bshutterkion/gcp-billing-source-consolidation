@@ -13,7 +13,6 @@ Consolidate multiple GCP billing export tables (one per billing account) into a 
   - `bigquery.dataEditor` on the destination project
   - `bigquery.jobUser` on the destination project
   - `bigquery.dataViewer` on all source projects (or grant at org/folder level)
-  - `resourcemanager.organizationViewer` on the org (for the `discover` command only)
 - [ ] A **JSON key** exported for the service account
 
 #### Enable APIs
@@ -90,19 +89,19 @@ docker compose run --rm billing-consolidator
 
 ### 1. Discover billing export tables
 
-Scan the GCP organization for all billing export tables:
+Scan all accessible projects for billing export tables:
 
 ```bash
 ./billing-consolidator discover \
-  --org-id ORG_ID \
   --output sources.json
 ```
+
+The tool scans every project the service account (or ADC user) has access to. No org ID is needed — if your billing exports span multiple organizations, they'll all be found as long as the SA has `bigquery.dataViewer` on the source projects.
 
 For detailed/resource-level exports, add `--detailed`:
 
 ```bash
 ./billing-consolidator discover \
-  --org-id ORG_ID \
   --output sources-detailed.json \
   --detailed
 ```

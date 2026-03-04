@@ -19,7 +19,6 @@ Northwestern University is transitioning from 2 shared billing IDs to 39+ indivi
   - `roles/bigquery.dataEditor` on the destination project (write consolidated data)
   - `roles/bigquery.jobUser` on the destination project (run queries)
   - `roles/bigquery.dataViewer` on **all source projects** (read billing exports)
-  - `roles/resourcemanager.organizationViewer` (for `discover` command only)
 - Export a **JSON key** for the service account — this is uploaded to Kion as well
 
 ### Enabling APIs
@@ -67,13 +66,14 @@ go build -o billing-consolidator .
 
 ### 1. Discover billing export tables
 
-Scan all projects in the GCP organization for billing export tables:
+Scan all accessible projects for billing export tables:
 
 ```bash
 ./billing-consolidator discover \
-  --org-id ORG_ID \
   --output sources.json
 ```
+
+The tool scans every project the service account (or ADC user) has access to, regardless of which organization they belong to. The `--org-id` flag is optional and used only for logging context.
 
 This outputs a JSON file listing all `gcp_billing_export_v1_*` (standard) tables found. Detailed/resource-level exports (`gcp_billing_export_resource_v1_*`) are excluded by default.
 
@@ -81,7 +81,6 @@ To discover detailed/resource-level exports instead:
 
 ```bash
 ./billing-consolidator discover \
-  --org-id ORG_ID \
   --output sources-detailed.json \
   --detailed
 ```

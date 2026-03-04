@@ -12,8 +12,9 @@ import (
 
 var discoverCmd = &cobra.Command{
 	Use:   "discover",
-	Short: "Discover billing export tables across a GCP organization",
-	Long: `Scans all projects in a GCP organization for BigQuery billing export tables.
+	Short: "Discover billing export tables across accessible GCP projects",
+	Long: `Scans all accessible projects for BigQuery billing export tables.
+If --org-id is provided, it is logged for context but all accessible projects are scanned regardless.
 Outputs discovered sources as JSON for use with the add-source command.`,
 	RunE: runDiscover,
 }
@@ -25,10 +26,9 @@ var (
 )
 
 func init() {
-	discoverCmd.Flags().StringVar(&orgID, "org-id", "", "GCP organization ID (required)")
+	discoverCmd.Flags().StringVar(&orgID, "org-id", "", "GCP organization ID (optional, scans all accessible projects if omitted)")
 	discoverCmd.Flags().StringVar(&outputFile, "output", "", "Output file path (defaults to stdout)")
 	discoverCmd.Flags().BoolVar(&discoverDetailed, "detailed", false, "Output detailed/resource-level exports instead of standard")
-	_ = discoverCmd.MarkFlagRequired("org-id")
 	rootCmd.AddCommand(discoverCmd)
 }
 
