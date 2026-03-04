@@ -207,21 +207,34 @@ func buildFieldExpr(merged MergedField, sourceFields map[string]SchemaField, pat
 }
 
 // DiscoverAndMergeSchemas discovers schemas for all sources and merges them.
-func (c *Consolidator) DiscoverAndMergeSchemas(ctx context.Context, sources []SourceRecord) (*MergedSchema, []*TableSchema, error) {
+// Sources that cannot be read (e.g., missing table/dataset) are skipped with a warning.
+// Returns the merged schema, per-source schemas, and the filtered list of valid sources.
+func (c *Consolidator) DiscoverAndMergeSchemas(ctx context.Context, sources []SourceRecord) (*MergedSchema, []*TableSchema, []SourceRecord, error) {
 	var schemas []*TableSchema
+	var validSources []SourceRecord
 	for _, s := range sources {
 		ts, err := c.DiscoverSchema(ctx, s)
 		if err != nil {
-			return nil, nil, err
+			fmt.Printf("  WARNING: skipping %s: %v\n", BuildSourcesFullRef(s), err)
+			continue
 		}
 		fmt.Printf("  %s: %d top-level columns\n", BuildSourcesFullRef(s), len(ts.Fields))
 		schemas = append(schemas, ts)
+		validSources = append(validSources, s)
+	}
+
+	if len(validSources) == 0 {
+		return nil, nil, nil, fmt.Errorf("no valid sources found (all %d sources were skipped)", len(sources))
+	}
+
+	if skipped := len(sources) - len(validSources); skipped > 0 {
+		fmt.Printf("Skipped %d sources due to errors, proceeding with %d\n", skipped, len(validSources))
 	}
 
 	merged := MergeSchemas(schemas)
 	fmt.Printf("Merged schema: %d top-level columns\n", len(merged.Fields))
 
-	return merged, schemas, nil
+	return merged, schemas, validSources, nil
 }
 
 // bqTypeToDDL maps BigQuery API type names to DDL type names.
@@ -389,12 +402,12 @@ WHERE usage_start_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL %d DAY);
 // RunFullLoad executes a full consolidation.
 func (c *Consolidator) RunFullLoad(ctx context.Context, sources []SourceRecord, dryRun bool) error {
 	fmt.Println("Discovering source schemas...")
-	merged, schemas, err := c.DiscoverAndMergeSchemas(ctx, sources)
+	merged, schemas, validSources, err := c.DiscoverAndMergeSchemas(ctx, sources)
 	if err != nil {
 		return fmt.Errorf("discovering schemas: %w", err)
 	}
 
-	sql, err := BuildFullLoadSQL(c.ProjectID, c.DatasetID, c.TableName, sources, merged, schemas)
+	sql, err := BuildFullLoadSQL(c.ProjectID, c.DatasetID, c.TableName, validSources, merged, schemas)
 	if err != nil {
 		return err
 	}
@@ -427,12 +440,12 @@ func (c *Consolidator) RunFullLoad(ctx context.Context, sources []SourceRecord, 
 // RunIncrementalSync executes an incremental sync for the last N days.
 func (c *Consolidator) RunIncrementalSync(ctx context.Context, sources []SourceRecord, days int, dryRun bool) error {
 	fmt.Println("Discovering source schemas...")
-	merged, schemas, err := c.DiscoverAndMergeSchemas(ctx, sources)
+	merged, schemas, validSources, err := c.DiscoverAndMergeSchemas(ctx, sources)
 	if err != nil {
 		return fmt.Errorf("discovering schemas: %w", err)
 	}
 
-	sql, err := BuildIncrementalSQL(c.ProjectID, c.DatasetID, c.TableName, sources, days, merged, schemas)
+	sql, err := BuildIncrementalSQL(c.ProjectID, c.DatasetID, c.TableName, validSources, days, merged, schemas)
 	if err != nil {
 		return err
 	}

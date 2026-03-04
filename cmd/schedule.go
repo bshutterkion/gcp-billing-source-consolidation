@@ -84,13 +84,13 @@ func runSchedule(cmd *cobra.Command, args []string) error {
 		TableName: config.DefaultTable,
 	}
 	fmt.Println("Discovering source schemas...")
-	merged, schemas, err := consolidator.DiscoverAndMergeSchemas(ctx, sources)
+	merged, schemas, validSources, err := consolidator.DiscoverAndMergeSchemas(ctx, sources)
 	if err != nil {
 		return fmt.Errorf("discovering schemas: %w", err)
 	}
 
 	// Build the scheduled query SQL
-	sql, err := bq.BuildScheduledQuerySQL(cfg.Project, cfg.Dataset, config.DefaultTable, sources, scheduleDays, merged, schemas)
+	sql, err := bq.BuildScheduledQuerySQL(cfg.Project, cfg.Dataset, config.DefaultTable, validSources, scheduleDays, merged, schemas)
 	if err != nil {
 		return err
 	}
