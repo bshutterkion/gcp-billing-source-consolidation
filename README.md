@@ -15,6 +15,7 @@ Consolidate multiple GCP billing export tables (one per billing account) into a 
   - `bigquery.dataEditor` on the destination project
   - `bigquery.jobUser` on the destination project
   - `bigquery.dataViewer` on all source projects (or grant at org/folder level)
+  - `resourcemanager.organizationViewer` on the org (for the `discover` command only)
 - [ ] A **JSON key** exported for the service account
 
 ### Enable APIs
