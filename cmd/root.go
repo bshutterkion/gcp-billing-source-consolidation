@@ -29,5 +29,5 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().StringVar(&cfg.Project, "project", "", "Destination GCP project ID")
 	rootCmd.PersistentFlags().StringVar(&cfg.Dataset, "dataset", "", "Destination BigQuery dataset ID")
-	rootCmd.PersistentFlags().StringVar(&cfg.SAKeyFile, "sa-key", "", "Path to service account JSON key file (defaults to ADC)")
+	rootCmd.PersistentFlags().StringVar(&cfg.SAKeyFile, "sa-key", "sa-key.json", "Path to service account JSON key file")
 }

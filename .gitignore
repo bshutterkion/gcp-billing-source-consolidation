@@ -1,6 +1,9 @@
 # Go binary
 billing-consolidator
 
+# Service account key
+sa-key.json
+
 # Sample/generated data
 *.xlsx
 *.zip

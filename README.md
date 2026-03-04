@@ -47,6 +47,8 @@ gcloud iam service-accounts keys create sa-key.json \
   --project=DEST_PROJECT_ID
 ```
 
+Place `sa-key.json` in the same directory as the `billing-consolidator` binary. The tool looks for it there by default (override with `--sa-key path/to/key.json`).
+
 ## Build the CLI
 
 ```bash
