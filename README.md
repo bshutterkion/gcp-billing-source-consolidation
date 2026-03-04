@@ -74,7 +74,7 @@ docker compose run --rm billing-consolidator discover --org-id ORG_ID --output s
 
 ### Option C: Build from source
 
-Requires **Go 1.21+** installed.
+Requires **Go 1.25+** installed.
 
 ```bash
 go build -o billing-consolidator .

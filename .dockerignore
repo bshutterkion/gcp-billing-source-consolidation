@@ -1,0 +1,8 @@
+.git
+dist
+billing-consolidator
+*.xlsx
+*.zip
+*.sql
+terraform
+sa-key.json
