@@ -2,271 +2,271 @@
   {
     "project_id": "noruni-010018-d3ddae-1d89cb",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_010018-D3DDAE-1D89CB",
+    "table_name": "gcp_billing_export_v1_010018_d3ddae_1d89cb",
     "billing_account_id": "010018-D3DDAE-1D89CB"
   },
   {
     "project_id": "noruni-010279-cd4b84-2c2744",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_010279-CD4B84-2C2744",
+    "table_name": "gcp_billing_export_v1_010279_cd4b84_2c2744",
     "billing_account_id": "010279-CD4B84-2C2744"
   },
   {
     "project_id": "noruni-0105f7-9213ed-bb65cc",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_0105F7-9213ED-BB65CC",
+    "table_name": "gcp_billing_export_v1_0105f7_9213ed_bb65cc",
     "billing_account_id": "0105F7-9213ED-BB65CC"
   },
   {
     "project_id": "noruni-010688-0a2096-40791d",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_010688-0A2096-40791D",
+    "table_name": "gcp_billing_export_v1_010688_0a2096_40791d",
     "billing_account_id": "010688-0A2096-40791D"
   },
   {
     "project_id": "noruni-010b18-14507a-e7e32f",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_010B18-14507A-E7E32F",
+    "table_name": "gcp_billing_export_v1_010b18_14507a_e7e32f",
     "billing_account_id": "010B18-14507A-E7E32F"
   },
   {
     "project_id": "noruni-010e2d-ea17cd-9cdf78",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_010E2D-EA17CD-9CDF78",
+    "table_name": "gcp_billing_export_v1_010e2d_ea17cd_9cdf78",
     "billing_account_id": "010E2D-EA17CD-9CDF78"
   },
   {
     "project_id": "noruni-0110fc-7ef805-b1d01e",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_0110FC-7EF805-B1D01E",
+    "table_name": "gcp_billing_export_v1_0110fc_7ef805_b1d01e",
     "billing_account_id": "0110FC-7EF805-B1D01E"
   },
   {
     "project_id": "noruni-011a1b-f5b8d8-db052a",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_011A1B-F5B8D8-DB052A",
+    "table_name": "gcp_billing_export_v1_011a1b_f5b8d8_db052a",
     "billing_account_id": "011A1B-F5B8D8-DB052A"
   },
   {
     "project_id": "noruni-0122a4-206e2d-a69afb",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_0122A4-206E2D-A69AFB",
+    "table_name": "gcp_billing_export_v1_0122a4_206e2d_a69afb",
     "billing_account_id": "0122A4-206E2D-A69AFB"
   },
   {
     "project_id": "noruni-0124c2-80db3c-46337f",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_0124C2-80DB3C-46337F",
+    "table_name": "gcp_billing_export_v1_0124c2_80db3c_46337f",
     "billing_account_id": "0124C2-80DB3C-46337F"
   },
   {
     "project_id": "noruni-012bf9-70e2c3-391edb",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_012BF9-70E2C3-391EDB",
+    "table_name": "gcp_billing_export_v1_012bf9_70e2c3_391edb",
     "billing_account_id": "012BF9-70E2C3-391EDB"
   },
   {
     "project_id": "noruni-012c49-89c662-536f31",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_012C49-89C662-536F31",
+    "table_name": "gcp_billing_export_v1_012c49_89c662_536f31",
     "billing_account_id": "012C49-89C662-536F31"
   },
   {
     "project_id": "noruni-013162-bf9c0e-22841e",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_013162-BF9C0E-22841E",
+    "table_name": "gcp_billing_export_v1_013162_bf9c0e_22841e",
     "billing_account_id": "013162-BF9C0E-22841E"
   },
   {
     "project_id": "seraphic-spider-295515",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01380B-58E60B-069D2C",
+    "table_name": "gcp_billing_export_v1_01380b_58e60b_069d2c",
     "billing_account_id": "01380B-58E60B-069D2C"
   },
   {
     "project_id": "noruni-01380b-58e60b-069d2c",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01380B-58E60B-069D2C",
+    "table_name": "gcp_billing_export_v1_01380b_58e60b_069d2c",
     "billing_account_id": "01380B-58E60B-069D2C"
   },
   {
     "project_id": "noruni-013989-28fd87-bd2164",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_013989-28FD87-BD2164",
+    "table_name": "gcp_billing_export_v1_013989_28fd87_bd2164",
     "billing_account_id": "013989-28FD87-BD2164"
   },
   {
     "project_id": "noruni-01436d-896c0c-c9e99c",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01436D-896C0C-C9E99C",
+    "table_name": "gcp_billing_export_v1_01436d_896c0c_c9e99c",
     "billing_account_id": "01436D-896C0C-C9E99C"
   },
   {
     "project_id": "noruni-01452f-b7b2f9-abdb09",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01452F-B7B2F9-ABDB09",
+    "table_name": "gcp_billing_export_v1_01452f_b7b2f9_abdb09",
     "billing_account_id": "01452F-B7B2F9-ABDB09"
   },
   {
     "project_id": "noruni-014a80-7ffab5-4fd404",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_014A80-7FFAB5-4FD404",
+    "table_name": "gcp_billing_export_v1_014a80_7ffab5_4fd404",
     "billing_account_id": "014A80-7FFAB5-4FD404"
   },
   {
     "project_id": "noruni-014f44-e4abc4-e3c409",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_014F44-E4ABC4-E3C409",
+    "table_name": "gcp_billing_export_v1_014f44_e4abc4_e3c409",
     "billing_account_id": "014F44-E4ABC4-E3C409"
   },
   {
     "project_id": "noruni-015105-cb1547-bb75a7",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_015105-CB1547-BB75A7",
+    "table_name": "gcp_billing_export_v1_015105_cb1547_bb75a7",
     "billing_account_id": "015105-CB1547-BB75A7"
   },
   {
     "project_id": "noruni-015952-503718-e2e84b",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_015952-503718-E2E84B",
+    "table_name": "gcp_billing_export_v1_015952_503718_e2e84b",
     "billing_account_id": "015952-503718-E2E84B"
   },
   {
     "project_id": "noruni-015d26-a57355-7e6be9",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_015D26-A57355-7E6BE9",
+    "table_name": "gcp_billing_export_v1_015d26_a57355_7e6be9",
     "billing_account_id": "015D26-A57355-7E6BE9"
   },
   {
     "project_id": "noruni-015e98-5b53b7-c82cbf",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_015E98-5B53B7-C82CBF",
+    "table_name": "gcp_billing_export_v1_015e98_5b53b7_c82cbf",
     "billing_account_id": "015E98-5B53B7-C82CBF"
   },
   {
     "project_id": "noruni-01623e-a83717-b5747c",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01623E-A83717-B5747C",
+    "table_name": "gcp_billing_export_v1_01623e_a83717_b5747c",
     "billing_account_id": "01623E-A83717-B5747C"
   },
   {
     "project_id": "noruni-01627d-ac8476-34b2af",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01627D-AC8476-34B2AF",
+    "table_name": "gcp_billing_export_v1_01627d_ac8476_34b2af",
     "billing_account_id": "01627D-AC8476-34B2AF"
   },
   {
     "project_id": "noruni-016d4c-3bd0f5-f57d48",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_016D4C-3BD0F5-F57D48",
+    "table_name": "gcp_billing_export_v1_016d4c_3bd0f5_f57d48",
     "billing_account_id": "016D4C-3BD0F5-F57D48"
   },
   {
     "project_id": "noruni-017e35-e43cf3-dc553e",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_017E35-E43CF3-DC553E",
+    "table_name": "gcp_billing_export_v1_017e35_e43cf3_dc553e",
     "billing_account_id": "017E35-E43CF3-DC553E"
   },
   {
     "project_id": "noruni-0181e4-09b4de-4e1426",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_0181E4-09B4DE-4E1426",
+    "table_name": "gcp_billing_export_v1_0181e4_09b4de_4e1426",
     "billing_account_id": "0181E4-09B4DE-4E1426"
   },
   {
     "project_id": "noruni-0183d2-f78eda-a3e457",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_0183D2-F78EDA-A3E457",
+    "table_name": "gcp_billing_export_v1_0183d2_f78eda_a3e457",
     "billing_account_id": "0183D2-F78EDA-A3E457"
   },
   {
     "project_id": "noruni-019cfd-df0532-4787e8",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_019CFD-DF0532-4787E8",
+    "table_name": "gcp_billing_export_v1_019cfd_df0532_4787e8",
     "billing_account_id": "019CFD-DF0532-4787E8"
   },
   {
     "project_id": "noruni-019fdf-b12567-9928d1",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_019FDF-B12567-9928D1",
+    "table_name": "gcp_billing_export_v1_019fdf_b12567_9928d1",
     "billing_account_id": "019FDF-B12567-9928D1"
   },
   {
     "project_id": "noruni-01a513-c10403-9a7cc2",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01A513-C10403-9A7CC2",
+    "table_name": "gcp_billing_export_v1_01a513_c10403_9a7cc2",
     "billing_account_id": "01A513-C10403-9A7CC2"
   },
   {
     "project_id": "noruni-01a807-fce8d9-2b96de",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01A807-FCE8D9-2B96DE",
+    "table_name": "gcp_billing_export_v1_01a807_fce8d9_2b96de",
     "billing_account_id": "01A807-FCE8D9-2B96DE"
   },
   {
     "project_id": "noruni-01a8e5-a1d022-de304b",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01A8E5-A1D022-DE304B",
+    "table_name": "gcp_billing_export_v1_01a8e5_a1d022_de304b",
     "billing_account_id": "01A8E5-A1D022-DE304B"
   },
   {
     "project_id": "noruni-01ab3a-e8cea7-2ad548",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01AB3A-E8CEA7-2AD548",
+    "table_name": "gcp_billing_export_v1_01ab3a_e8cea7_2ad548",
     "billing_account_id": "01AB3A-E8CEA7-2AD548"
   },
   {
     "project_id": "noruni-01b46b-097e30-ad1615",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01B46B-097E30-AD1615",
+    "table_name": "gcp_billing_export_v1_01b46b_097e30_ad1615",
     "billing_account_id": "01B46B-097E30-AD1615"
   },
   {
     "project_id": "noruni-01bd52-e5cdd9-024db0",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01BD52-E5CDD9-024DB0",
+    "table_name": "gcp_billing_export_v1_01bd52_e5cdd9_024db0",
     "billing_account_id": "01BD52-E5CDD9-024DB0"
   },
   {
     "project_id": "noruni-01be27-db2ded-50d51d",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01BE27-DB2DED-50D51D",
+    "table_name": "gcp_billing_export_v1_01be27_db2ded_50d51d",
     "billing_account_id": "01BE27-DB2DED-50D51D"
   },
   {
     "project_id": "noruni-01c50b-15317e-a3f7ae",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01C50B-15317E-A3F7AE",
+    "table_name": "gcp_billing_export_v1_01c50b_15317e_a3f7ae",
     "billing_account_id": "01C50B-15317E-A3F7AE"
   },
   {
     "project_id": "noruni-01e010-b0d9c5-2dd790",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01E010-B0D9C5-2DD790",
+    "table_name": "gcp_billing_export_v1_01e010_b0d9c5_2dd790",
     "billing_account_id": "01E010-B0D9C5-2DD790"
   },
   {
     "project_id": "noruni-01f89e-528371-e0087e",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01F89E-528371-E0087E",
+    "table_name": "gcp_billing_export_v1_01f89e_528371_e0087e",
     "billing_account_id": "01F89E-528371-E0087E"
   },
   {
     "project_id": "noruni-01f96f-7c1adf-343c53",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01F96F-7C1ADF-343C53",
+    "table_name": "gcp_billing_export_v1_01f96f_7c1adf_343c53",
     "billing_account_id": "01F96F-7C1ADF-343C53"
   },
   {
     "project_id": "noruni-01fd9e-ae1565-525fe8",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_01FD9E-AE1565-525FE8",
+    "table_name": "gcp_billing_export_v1_01fd9e_ae1565_525fe8",
     "billing_account_id": "01FD9E-AE1565-525FE8"
   },
   {
     "project_id": "stanuni-00e6b5-dfebde-a34be6",
     "dataset_id": "billing_export",
-    "table_name": "gcp_billing_export_v1_00E6B5-DFEBDE-A34BE6",
+    "table_name": "gcp_billing_export_v1_00e6b5_dfebde_a34be6",
     "billing_account_id": "00E6B5-DFEBDE-A34BE6"
   }
 ]

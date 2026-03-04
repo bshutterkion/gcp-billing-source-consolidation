@@ -26,10 +26,24 @@ type SourceManager struct {
 	DatasetID string
 }
 
-// CreateMetadataTable creates the billing_export_sources table if it doesn't exist.
+// CreateMetadataTable drops and recreates the billing_export_sources table.
 func (m *SourceManager) CreateMetadataTable(ctx context.Context) error {
-	query := fmt.Sprintf(`
-CREATE TABLE IF NOT EXISTS %s.%s.billing_export_sources (
+	dropQuery := fmt.Sprintf(`DROP TABLE IF EXISTS %s.%s.billing_export_sources`, m.ProjectID, m.DatasetID)
+	q := m.Client.Query(dropQuery)
+	job, err := q.Run(ctx)
+	if err != nil {
+		return fmt.Errorf("dropping metadata table: %w", err)
+	}
+	status, err := job.Wait(ctx)
+	if err != nil {
+		return fmt.Errorf("waiting for metadata table drop: %w", err)
+	}
+	if status.Err() != nil {
+		return fmt.Errorf("metadata table drop failed: %w", status.Err())
+	}
+
+	createQuery := fmt.Sprintf(`
+CREATE TABLE %s.%s.billing_export_sources (
   source_project STRING NOT NULL,
   source_dataset STRING NOT NULL,
   source_table STRING NOT NULL,
@@ -38,12 +52,12 @@ CREATE TABLE IF NOT EXISTS %s.%s.billing_export_sources (
   added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
 )`, m.ProjectID, m.DatasetID)
 
-	q := m.Client.Query(query)
-	job, err := q.Run(ctx)
+	q = m.Client.Query(createQuery)
+	job, err = q.Run(ctx)
 	if err != nil {
 		return fmt.Errorf("creating metadata table: %w", err)
 	}
-	status, err := job.Wait(ctx)
+	status, err = job.Wait(ctx)
 	if err != nil {
 		return fmt.Errorf("waiting for metadata table creation: %w", err)
 	}
