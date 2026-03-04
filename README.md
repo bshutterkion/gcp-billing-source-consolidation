@@ -4,10 +4,8 @@ Consolidate multiple GCP billing export tables (one per billing account) into a 
 
 ## Prerequisites
 
-- [ ] **Go 1.21+** installed
-- [ ] **gcloud CLI** installed and authenticated:
-  - `gcloud auth login`
-  - `gcloud auth application-default login`
+### GCP setup (required for all options)
+
 - [ ] A **destination GCP project** with billing enabled and these APIs:
   - `bigquery.googleapis.com`
   - `bigquerydatatransfer.googleapis.com`
@@ -18,14 +16,14 @@ Consolidate multiple GCP billing export tables (one per billing account) into a 
   - `resourcemanager.organizationViewer` on the org (for the `discover` command only)
 - [ ] A **JSON key** exported for the service account
 
-### Enable APIs
+#### Enable APIs
 
 ```bash
 gcloud services enable bigquery.googleapis.com bigquerydatatransfer.googleapis.com \
   --project=DEST_PROJECT_ID
 ```
 
-### Grant service account permissions
+#### Grant service account permissions
 
 ```bash
 # On the destination project:
@@ -39,7 +37,7 @@ gcloud projects add-iam-policy-binding SOURCE_PROJECT_ID \
   --role="roles/bigquery.dataViewer"
 ```
 
-### Export service account key
+#### Export service account key
 
 ```bash
 gcloud iam service-accounts keys create sa-key.json \
@@ -47,15 +45,48 @@ gcloud iam service-accounts keys create sa-key.json \
   --project=DEST_PROJECT_ID
 ```
 
-Place `sa-key.json` in the same directory as the `billing-consolidator` binary. The tool looks for it there by default (override with `--sa-key path/to/key.json`).
+Place `sa-key.json` in the root of this project directory. The tool looks for it there by default (override with `--sa-key path/to/key.json`).
 
-## Build the CLI
+### Option A: Pre-built binary
+
+Download the binary for your platform from the [GitHub releases](../../releases) page. Place it in this directory and make it executable:
+
+```bash
+chmod +x billing-consolidator-*
+mv billing-consolidator-* billing-consolidator
+```
+
+### Option B: Docker
+
+Requires **Docker** and **Docker Compose** installed.
+
+Place your `sa-key.json` in the project root, then run commands via:
+
+```bash
+docker compose run --rm billing-consolidator <command> [flags]
+```
+
+For example:
+
+```bash
+docker compose run --rm billing-consolidator discover --org-id ORG_ID --output sources.json
+```
+
+### Option C: Build from source
+
+Requires **Go 1.21+** installed.
 
 ```bash
 go build -o billing-consolidator .
 ```
 
 ## Step-by-step Workflow
+
+All examples below use `./billing-consolidator`. If using Docker, replace with:
+
+```bash
+docker compose run --rm billing-consolidator
+```
 
 ### 1. Discover billing export tables
 

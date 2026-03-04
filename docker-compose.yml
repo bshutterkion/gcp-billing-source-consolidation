@@ -1,0 +1,7 @@
+services:
+  billing-consolidator:
+    build: .
+    volumes:
+      - ./sa-key.json:/app/sa-key.json:ro
+      - ./sources.json:/app/sources.json
+      - ./sources-detailed.json:/app/sources-detailed.json
