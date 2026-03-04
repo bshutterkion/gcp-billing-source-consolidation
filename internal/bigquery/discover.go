@@ -9,7 +9,6 @@ import (
 	resourcemanager "cloud.google.com/go/resourcemanager/apiv3"
 	"cloud.google.com/go/resourcemanager/apiv3/resourcemanagerpb"
 	"google.golang.org/api/iterator"
-	"google.golang.org/api/option"
 )
 
 // BillingExportSource represents a discovered billing export table.
@@ -76,10 +75,7 @@ type GCPProjectLister struct {
 
 // ListProjects returns all project IDs under the given organization.
 func (l *GCPProjectLister) ListProjects(ctx context.Context, orgID string) ([]string, error) {
-	var opts []option.ClientOption
-	if l.SAKeyFile != "" {
-		opts = append(opts, option.WithCredentialsFile(l.SAKeyFile))
-	}
+	opts := CredentialOpts(l.SAKeyFile)
 
 	client, err := resourcemanager.NewProjectsClient(ctx, opts...)
 	if err != nil {

@@ -3,6 +3,7 @@ package bigquery
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"cloud.google.com/go/bigquery"
 	"google.golang.org/api/option"
@@ -13,13 +14,21 @@ type ClientFactory struct {
 	SAKeyFile string
 }
 
-// NewClient creates a BigQuery client for the given project.
-// Uses Application Default Credentials unless SAKeyFile is set.
-func (f *ClientFactory) NewClient(ctx context.Context, projectID string) (*bigquery.Client, error) {
-	var opts []option.ClientOption
-	if f.SAKeyFile != "" {
-		opts = append(opts, option.WithCredentialsFile(f.SAKeyFile))
+// CredentialOpts returns a ClientOption for the SA key file if it exists,
+// otherwise returns nil to fall back to Application Default Credentials.
+func CredentialOpts(saKeyFile string) []option.ClientOption {
+	if saKeyFile != "" {
+		if info, err := os.Stat(saKeyFile); err == nil && !info.IsDir() {
+			return []option.ClientOption{option.WithCredentialsFile(saKeyFile)}
+		}
 	}
+	return nil
+}
+
+// NewClient creates a BigQuery client for the given project.
+// Uses Application Default Credentials unless SAKeyFile points to an existing file.
+func (f *ClientFactory) NewClient(ctx context.Context, projectID string) (*bigquery.Client, error) {
+	opts := CredentialOpts(f.SAKeyFile)
 
 	client, err := bigquery.NewClient(ctx, projectID, opts...)
 	if err != nil {

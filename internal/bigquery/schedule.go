@@ -8,7 +8,6 @@ import (
 	datatransfer "cloud.google.com/go/bigquery/datatransfer/apiv1"
 	"cloud.google.com/go/bigquery/datatransfer/apiv1/datatransferpb"
 	"google.golang.org/api/iterator"
-	"google.golang.org/api/option"
 	"google.golang.org/protobuf/types/known/fieldmaskpb"
 	"google.golang.org/protobuf/types/known/structpb"
 )
@@ -94,10 +93,7 @@ WHERE usage_start_time >= cutoff;
 // CreateOrUpdateSchedule creates or updates a BQ Data Transfer scheduled query.
 // serviceAccountName is the email of a service account to run the query as (required when using ADC).
 func (s *Scheduler) CreateOrUpdateSchedule(ctx context.Context, projectID, datasetID, displayName, sql, cron, serviceAccountName string) (string, error) {
-	var opts []option.ClientOption
-	if s.SAKeyFile != "" {
-		opts = append(opts, option.WithCredentialsFile(s.SAKeyFile))
-	}
+	opts := CredentialOpts(s.SAKeyFile)
 
 	client, err := datatransfer.NewClient(ctx, opts...)
 	if err != nil {
